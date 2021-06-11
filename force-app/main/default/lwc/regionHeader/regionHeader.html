@@ -1,0 +1,96 @@
+<template>
+  <template if:true={region.data}>
+    <div class="slds-page-header slds-page-header_record-home">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+              <span class="slds-icon_container">
+                <lightning-icon
+                  icon-name="standard:location"
+                  alternative-text="Connected"
+                  title="Connected"
+                  variant="inverse"
+                  size="medium"
+                  class="slds-m-top_xxx-small"
+                >
+                </lightning-icon>
+              </span>
+            </div>
+            <div class="slds-media__body">
+              <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                  <h1>
+                    <span>Region</span>
+                    <span
+                      class="slds-page-header__title slds-truncate"
+                      title={regionName}
+                      >{regionName}</span
+                    >
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-page-header__col-actions">
+          <div class="slds-page-header__controls">
+            <div class="slds-page-header__control">
+              <lightning-button
+                label="Schedule Org Migration"
+                variant="brand"
+                onclick={handleScheduleMigration}
+              ></lightning-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-page-header__row slds-page-header__row_gutters">
+        <div class="slds-page-header__col-details">
+          <ul class="slds-page-header__detail-row">
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 1">
+                Availability
+              </div>
+              <div class="slds-truncate" title="Availability">
+                {availability}
+              </div>
+            </li>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 2">
+                Compliance
+              </div>
+              <div class={complianceStyle} title="Compliance">
+                <b>{compliance}</b>
+              </div>
+            </li>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 3">
+                Boundary
+              </div>
+              <div class="slds-truncate" title="Boundary">{boundary}</div>
+            </li>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 4">
+                Capacity
+              </div>
+              <div class="slds-truncate" title="Capacity">{capacity} units</div>
+            </li>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 4">
+                Instances
+              </div>
+              <div class="slds-truncate" title="Instances">{instances}</div>
+            </li>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 4">
+                Latency
+              </div>
+              <div class="slds-truncate" title="Latency">{latency} ms</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </template>
+</template>

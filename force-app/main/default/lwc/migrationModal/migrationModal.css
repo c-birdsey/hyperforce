@@ -1,0 +1,15 @@
+.compliance-ready {
+  color: #004a29;
+}
+
+.compliance-caution {
+  color: #ffb75d;
+}
+
+.compliance-error {
+  color: #c23934;
+}
+
+.slds-modal__content {
+  min-height: 215px;
+}

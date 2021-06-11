@@ -1,0 +1,26 @@
+<aura:component
+  implements="lightning:homeTemplate"
+  description="Home template for testing Org Migration app"
+>
+  <aura:attribute name="header" type="Aura.Component[]" />
+  <aura:attribute name="main" type="Aura.Component[]" />
+  <aura:attribute name="column1" type="Aura.Component[]" />
+  <aura:attribute name="column2" type="Aura.Component[]" />
+
+  <div>
+    <div>{!v.header}</div>
+    <div class="slds-m-top_medium">{!v.main}</div>
+    <!-- <lightning:layout pullToBoundary="small">
+      <lightning:layoutItem size="8" flexibility="grow" padding="around-small">
+        {!v.column1}
+      </lightning:layoutItem>
+      <lightning:layoutItem
+        size="4"
+        flexibility="grow"
+        class="slds-p-vertical_small slds-p-right_small"
+      >
+        {!v.column2}
+      </lightning:layoutItem>
+    </lightning:layout> -->
+  </div>
+</aura:component>

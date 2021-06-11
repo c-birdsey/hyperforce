@@ -1,0 +1,75 @@
+.slds-grid {
+  width: 100%;
+}
+
+.d3 {
+  background: white;
+  width: 90%;
+}
+
+.popover-container {
+  position: relative;
+}
+
+.country {
+  fill: #dddddd;
+}
+
+.selected {
+  fill: #d3d3d3;
+}
+
+.error {
+  fill: #c23934;
+  stroke: white;
+  stroke-width: 1.5;
+}
+
+.caution {
+  fill: #ffb75d;
+  stroke: white;
+  stroke-width: 1.5;
+}
+
+.ready {
+  fill: #004a29;
+  stroke: white;
+  stroke-width: 1.5;
+}
+
+.error-bg {
+  fill: #c23934;
+}
+
+.caution-bg {
+  fill: #ffb75d;
+}
+
+.ready-bg {
+  fill: #004a29;
+}
+
+.map-key {
+  padding-top: 24px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.target-dropdown {
+  margin-top: 12px;
+}
+
+.key-icon {
+  width: 16px;
+  margin: 0 8px 4px 0;
+}
+
+.explore-icon {
+  width: 18px;
+}
+
+.hidden {
+  display: none;
+}

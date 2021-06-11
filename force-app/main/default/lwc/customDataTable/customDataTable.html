@@ -1,0 +1,21 @@
+<template>
+  <slot class="table-header"></slot>
+  <template if:false={tableViewBool}>
+    <c-migration-data-table
+      key-field="map-data-table"
+      data={orgs}
+      hide-checkbox-column="true"
+      columns={orgColumns}
+    >
+    </c-migration-data-table>
+  </template>
+  <template if:true={tableViewBool}>
+    <c-migration-data-table
+      key-field="map-data-table"
+      data={regions}
+      hide-checkbox-column="true"
+      columns={regionColumns}
+    >
+    </c-migration-data-table>
+  </template>
+</template>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>SelectedRegion</masterLabel>
+    <isExposed>true</isExposed>
+    <description>This Lightning Message Channel sends information between region detail pages and Migration Assistant to alert when a region has been selected to schedule a migration</description>
+
+    <lightningMessageFields>
+        <fieldName>messageToSend</fieldName>
+        <description>message To Send</description>
+    </lightningMessageFields>
+
+</LightningMessageChannel>

@@ -1,0 +1,52 @@
+<template>
+  <div
+    class="slds-progress slds-progress_vertical slds-p-right_medium slds-p-left_xx-large slds-m-left_medium"
+  >
+    <ol class="slds-progress__list slds-progress__list-bordered">
+      <template for:each={items} for:item="item">
+        <li key={item.step} class="slds-progress__item">
+          <template if:true={item.complete}>
+            <span
+              class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+              title="Complete"
+            >
+              <lightning-icon
+                icon-name="utility:success"
+                alternative-text="Success"
+                size="x-small"
+              ></lightning-icon>
+              <span class="slds-assistive-text">Complete</span>
+            </span>
+          </template>
+          <template if:false={item.complete}>
+            <div class="slds-progress__marker"></div>
+          </template>
+
+          <div
+            class="slds-progress__item_content slds-grid slds-grid_align-spread slds-progress_vertical slds-progress__list-bordered"
+          >
+            <template if:true={item.isLink}>
+              <div class="slds-size_3-of-4"><a>{item.title}</a></div>
+            </template>
+            <template if:false={item.isLink}>
+              <div class="slds-size_3-of-4">
+                <div class="slds-text-title_bold">{item.title}</div>
+                <div class="slds-text-body_small">{item.content}</div>
+              </div>
+            </template>
+            <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+              <lightning-input
+                type="toggle"
+                label=" "
+                data-step={item.step}
+                message-toggle-active="Completed"
+                message-toggle-inactive="Incomplete"
+                onchange={onToggleChange}
+              ></lightning-input>
+            </div>
+          </div>
+        </li>
+      </template>
+    </ol>
+  </div>
+</template>

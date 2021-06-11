@@ -1,0 +1,125 @@
+<template>
+  <div class="slds-grid">
+    <div class="slds-col slds-size_12-of-12 popover-container">
+      <template if:true={isLoaded}>
+        <div class="d3 slds-align_absolute-center" lwc:dom="manual"></div>
+      </template>
+      <template if:false={isLoaded}>
+        <div class="slds-m-top_x-large slds-m-bottom_x-large">
+          <lightning-spinner
+            alternative-text="Loading map data"
+            variant="brand"
+            size="small"
+          ></lightning-spinner>
+        </div>
+      </template>
+      <template if:true={showRegionPopover}>
+        <c-region-popover
+          style={popoverStyleBlock}
+          popover-region={popoverRegion}
+          popover-nubbin={popoverNubbin}
+        ></c-region-popover>
+      </template>
+      <template if:true={showOrgPopover}>
+        <c-org-popover
+          style={popoverStyleBlock}
+          popover-region={popoverRegion}
+          popover-nubbin={popoverNubbin}
+        ></c-org-popover>
+      </template>
+    </div>
+  </div>
+  <div class="slds-grid">
+    <div class="slds-col slds-size_12-of-12">
+      <template if:true={isDistribution}>
+        <div class="map-key slds-align_absolute-center">
+          <span class="inline slds-p-right_large">
+            <lightning-input
+              type="checkbox"
+              label="Show available regions for your org migration"
+              name="show-regions"
+              onchange={handleRegions}
+            ></lightning-input>
+          </span>
+          <span class="inline slds-p-left_medium">
+            <img class="key-icon" src={orgIcon} />
+            <span class="slds-form-element__label" style="font-size: 13px"
+              >Your current orgs</span
+            >
+          </span>
+          <span class="inline slds-p-left_medium">
+            <img class="key-icon" src={selectedOrg} />
+            <span class="slds-form-element__label" style="font-size: 13px"
+              >Your selected org</span
+            >
+          </span>
+          <span class="inline slds-p-left_medium">
+            <img class="key-icon" src={regionIcon} />
+            <span class="slds-form-element__label" style="font-size: 13px"
+              >Available regions</span
+            >
+          </span>
+        </div>
+      </template>
+      <template if:false={isDistribution}>
+        <div class="map-key slds-align_absolute-center">
+          <span class="inline">
+            <span
+              class="slds-form-element__label slds-p-right_large"
+              style="font-size: 13px"
+              >Region's Org Compliance Status</span
+            >
+          </span>
+          <span>
+            <img
+              class="slds-m-right_xx-small explore-icon"
+              src={nonCompliantRegionsIcon}
+            />
+            <lightning-input
+              class="inline slds-m-right_small"
+              type="checkbox"
+              label="Not compliant"
+              name="not-compliant"
+              onchange={handleNonCompliant}
+              checked
+            ></lightning-input>
+          </span>
+          <span>
+            <img
+              class="slds-m-right_xx-small explore-icon"
+              src={cautionRegionsIcon}
+            />
+            <lightning-input
+              class="inline slds-m-right_small"
+              type="checkbox"
+              label="Proceed with caution"
+              name="caution"
+              onchange={handleCaution}
+              checked
+            ></lightning-input>
+          </span>
+          <span>
+            <img
+              class="slds-m-right_xx-small explore-icon"
+              src={readyRegionsIcon}
+            />
+            <lightning-input
+              class="inline slds-m-right_small"
+              type="checkbox"
+              label="Ready to go"
+              name="ready"
+              onchange={handleReady}
+              checked
+            ></lightning-input>
+          </span>
+          <span class="inline">
+            <img class="key-icon" src={selectedOrg} />
+            <span class="slds-form-element__label" style="font-size: 13px"
+              >Your selected org</span
+            >
+          </span>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

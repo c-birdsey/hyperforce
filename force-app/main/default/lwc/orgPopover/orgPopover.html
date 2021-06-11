@@ -1,0 +1,64 @@
+<template>
+  <section class={sectionClassBlock} role="dialog">
+    <lightning-button-icon
+      class="slds-float_right slds-popover__close"
+      icon-name="utility:close"
+      variant="bare"
+      size="medium"
+      alternative-text="Close"
+      title="Close dialog"
+    ></lightning-button-icon>
+    <header class="slds-popover__header header-bg">
+      <span class="slds-align-middle">
+        <img src={flagIcon} class="header-flag" />
+        <h2
+          class="slds-text-heading_small slds-align-middle"
+          id="dialog-heading"
+        >
+          {popoverRegion.name}
+        </h2>
+      </span>
+    </header>
+    <div class="slds-popover__body">
+      <div class="slds-grid">
+        <div
+          class="slds-col slds-size_3-of-5 data-col text-base-color slds-p-horizontal_x-small"
+        >
+          <p class="slds-form-element__label">Org ID</p>
+          <p class="slds-text-body_small popover-data-text">
+            {popoverRegion.id}
+          </p>
+          <br />
+          <p class="slds-form-element__label">Host Region</p>
+          <p class="slds-text-body_small popover-data-text">
+            {popoverRegion.region}
+          </p>
+          <br />
+          <p class="slds-form-element__label">Compliance Assessment</p>
+          <p class="text-ready slds-text-body_small popover-data-text">
+            {popoverRegion.compliance}
+          </p>
+        </div>
+        <div
+          class="slds-col slds-size_2-of-5 text-base-color slds-p-horizontal_x-small"
+        >
+          <p class="slds-form-element__label">Infrastructure</p>
+          <p class="slds-text-body_small popover-data-text">
+            {popoverRegion.infrastructure}
+          </p>
+
+          <br />
+          <p class="slds-form-element__label">Org Type</p>
+          <p class="slds-text-body_small popover-data-text">
+            {popoverRegion.type}
+          </p>
+          <br />
+          <p class="slds-form-element__label">Status</p>
+          <p class="slds-text-body_small popover-data-text">
+            {popoverRegion.status}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

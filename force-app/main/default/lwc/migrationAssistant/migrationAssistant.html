@@ -1,0 +1,228 @@
+<template>
+  <c-migration-header
+    show-action={isCompleted}
+    target-region={targetRegion}
+    hosted-region={hostedRegion}
+    org-to-migrate={orgToMigrate}
+  ></c-migration-header>
+  <section class="slds-card slds-m-top_small slds-m-bottom_medium">
+    <template if:true={targetRegion}>
+      <div class="slds-text-heading_medium slds-p-around_small">
+        Prepare your org for migration with our step-by-step guides.
+      </div>
+      <header class="slds-theme_shade slds-p-around_medium slds-m-bottom_small">
+        <div>
+          <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
+            <span>Complete all the steps below to get your org ready.</span>
+            <span aria-hidden="true">
+              <strong>{totalPercentage}% Complete</strong>
+            </span>
+          </div>
+          <lightning-progress-bar
+            value={totalPercentage}
+            size="medium"
+            variant="circular"
+          ></lightning-progress-bar>
+        </div>
+      </header>
+      <ol class="slds-setup-assistant">
+        <li class="slds-setup-assistant__item">
+          <article class="slds-setup-assistant__step">
+            <div class="slds-summary-detail">
+              <lightning-button-icon
+                class="slds-m-right_x-small slds-p-top_xx-small"
+                icon-name="utility:chevronright"
+                variant="bare"
+                alternative-text="Toggle open section 1"
+                onclick={handleToggleSection}
+                value="1"
+              >
+              </lightning-button-icon>
+              <c-custom-progress-ring
+                value={sectionOnePercentage}
+                size="large"
+                content="1"
+                class="slds-m-right_small"
+              >
+              </c-custom-progress-ring>
+
+              <div class="slds-media__body slds-m-top_x-small">
+                <div class="slds-media">
+                  <div
+                    class="slds-setup-assistant__step-summary-content slds-media__body"
+                  >
+                    <h3
+                      class="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    >
+                      <button
+                        class="slds-button slds-button_reset"
+                        onclick={handleToggleSection}
+                        value="1"
+                      >
+                        Review Data Policies
+                      </button>
+                    </h3>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                  </div>
+                  <div class="slds-media__figure slds-media__figure_reverse">
+                    <p class="slds-text-align_right slds-text-color_weak">
+                      3 steps
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <template if:true={showItems1}>
+              <c-custom-progress-indicator
+                items={items.sectionOne}
+                class="slds-m-left_large slds-p-right_x-small section-one"
+                onupdate={updateItemCompletion}
+                section="1"
+              ></c-custom-progress-indicator>
+            </template>
+          </article>
+        </li>
+        <li class="slds-setup-assistant__item">
+          <article class="slds-setup-assistant__step">
+            <div class="slds-summary-detail">
+              <lightning-button-icon
+                class="slds-m-right_x-small slds-p-top_xx-small"
+                icon-name="utility:chevronright"
+                variant="bare"
+                alternative-text="Toggle open section 2"
+                onclick={handleToggleSection}
+                value="2"
+              >
+              </lightning-button-icon>
+              <c-custom-progress-ring
+                value={sectionTwoPercentage}
+                size="large"
+                content="2"
+                class="slds-m-right_small"
+              >
+              </c-custom-progress-ring>
+
+              <div class="slds-media__body slds-m-top_x-small">
+                <div class="slds-media">
+                  <div
+                    class="slds-setup-assistant__step-summary-content slds-media__body"
+                  >
+                    <h3
+                      class="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    >
+                      <button
+                        class="slds-button slds-button_reset"
+                        onclick={handleToggleSection}
+                        value="2"
+                      >
+                        Prepare for Org Migration
+                      </button>
+                    </h3>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                  </div>
+                  <div class="slds-media__figure slds-media__figure_reverse">
+                    <p class="slds-text-align_right slds-text-color_weak">
+                      5 steps
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <template if:true={showItems2}>
+              <c-custom-progress-indicator
+                items={items.sectionTwo}
+                class="slds-m-left_large slds-p-right_x-small section-two"
+                onupdate={updateItemCompletion}
+                section="2"
+              ></c-custom-progress-indicator>
+            </template>
+          </article>
+        </li>
+        <li class="slds-setup-assistant__item">
+          <article class="slds-setup-assistant__step">
+            <div class="slds-summary-detail">
+              <lightning-button-icon
+                class="slds-m-right_x-small slds-p-top_xx-small"
+                icon-name="utility:chevronright"
+                variant="bare"
+                alternative-text="Toggle open section 3"
+                onclick={handleToggleSection}
+                value="3"
+              >
+              </lightning-button-icon>
+              <c-custom-progress-ring
+                value={sectionThreePercentage}
+                size="large"
+                content="3"
+                class="slds-m-right_small"
+              >
+              </c-custom-progress-ring>
+
+              <div class="slds-media__body slds-m-top_x-small">
+                <div class="slds-media">
+                  <div
+                    class="slds-setup-assistant__step-summary-content slds-media__body"
+                  >
+                    <h3
+                      class="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    >
+                      <button
+                        class="slds-button slds-button_reset"
+                        onclick={handleToggleSection}
+                        value="3"
+                      >
+                        Schedule Org Migration
+                      </button>
+                    </h3>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                  </div>
+                  <div class="slds-media__figure slds-media__figure_reverse">
+                    <p class="slds-text-align_right slds-text-color_weak">
+                      2 steps
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <template if:true={showItems3}>
+              <c-custom-progress-indicator
+                items={items.sectionThree}
+                class="slds-m-left_large slds-p-right_x-small section-three"
+                onupdate={updateItemCompletion}
+                section="3"
+              ></c-custom-progress-indicator>
+            </template>
+          </article>
+        </li>
+      </ol>
+    </template>
+    <template if:false={targetRegion}>
+      <c-empty-state show-modal>
+        <span slot="headerMessage"
+          >Looks like you haven't selected a target region</span
+        >
+        <span slot="subMessage"
+          >Head back to Org Migration Home to explore your current org locations
+          and potential regions to migrate to. Or, if you know your target
+          region, start a migration right away.</span
+        >
+        <span slot="linkMessage">Why should I migrate my org?</span>
+      </c-empty-state>
+    </template>
+  </section>
+</template>

@@ -1,0 +1,94 @@
+<template>
+  <div class="slds-page-header slds-page-header_record-home">
+    <div class="slds-page-header__row">
+      <div class="slds-page-header__col-title">
+        <div class="slds-media">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container">
+              <lightning-icon
+                icon-name="standard:account"
+                alternative-text="Connected"
+                title="Connected"
+                variant="inverse"
+                size="medium"
+                class="slds-m-top_xxx-small"
+              >
+              </lightning-icon>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <div class="slds-page-header__name">
+              <div class="slds-page-header__name-title">
+                <h1>
+                  <span>Migration Assistant</span>
+                  <span
+                    class="slds-page-header__title slds-truncate"
+                    title="Acme - 1,200 Widgets"
+                    >Acme</span
+                  >
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <template if:true={showAction}>
+        <div class="slds-page-header__col-actions">
+          <div class="slds-page-header__controls">
+            <div class="slds-page-header__control">
+              <lightning-button
+                label="Request Migration"
+                variant="brand"
+              ></lightning-button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div class="slds-page-header__row slds-page-header__row_gutters">
+      <div class="slds-page-header__col-details">
+        <ul class="slds-page-header__detail-row">
+          <li class="slds-page-header__detail-block">
+            <div class="slds-text-title slds-truncate" title="Field 1">
+              Org to Migrate
+            </div>
+            <div class="slds-truncate" title="Org to Migrate">
+              <a href="#">{orgToMigrate}</a>
+            </div>
+          </li>
+          <li class="slds-page-header__detail-block">
+            <div class="slds-text-title slds-truncate" title="Field 2">
+              Hosted Region
+            </div>
+            <div class="slds-truncate" title="Hosted Region">
+              {hostedRegion}
+            </div>
+          </li>
+          <li class="slds-page-header__detail-block">
+            <div class="slds-text-title slds-truncate" title="Field 3">
+              Target Region
+            </div>
+            <div class="slds-truncate" title="Target Region">
+              <template if:true={targetRegion}>
+                {targetRegion.regionName}
+              </template>
+              <template if:false={targetRegion}>
+                <i>Unselected</i>
+              </template>
+            </div>
+          </li>
+          <template if:true={targetRegion}>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 4">
+                Compliance Assessment Metric
+              </div>
+              <div class={complianceStyle} title="Compliance Assessment Metric">
+                <b>{targetRegion.regionCompliance}</b>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

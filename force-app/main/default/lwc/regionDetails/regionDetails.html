@@ -1,0 +1,165 @@
+<template>
+  <article class="slds-card slds-card_boundary">
+    <lightning-tabset active-tab-value="one">
+      <lightning-tab label="Products" value="one" class="slds-p-around_small">
+        <div class="slds-text-color_weak">
+          Excepteur cupidatat eu nulla pariatur nisi veniam aliquip ut cupidatat
+          velit.
+        </div>
+
+        <div
+          class="slds-grid slds-gutters_x-small slds-p-top_x-small slds-p-bottom_small"
+        >
+          <div class="slds-col slds-size_8-of-12">
+            <lightning-input
+              type="search"
+              label="Search"
+              placeholder="Search Products"
+              onchange={handleSearch}
+              class="slds-m-bottom_small"
+            >
+            </lightning-input>
+          </div>
+          <div class="slds-col slds-size_4-of-12">
+            <lightning-combobox
+              name="Filter Products"
+              label="Filter Products"
+              value={filterValue}
+              placeholder="Select Product Filter"
+              options={filterOptions}
+              onchange={handleFilter}
+            >
+            </lightning-combobox>
+          </div>
+        </div>
+
+        <template if:true={filterAll}>
+          <div class="slds-grid slds-gutters_x-small slds-wrap">
+            <template for:each={allProducts} for:item="product">
+              <div
+                key={product.Id}
+                class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-medium-size_1-of-3 slds-small-size_1-of-2"
+              >
+                <c-product-card
+                  product-name={product.Name}
+                  description={product.Description}
+                  tags={product.Tags}
+                ></c-product-card>
+              </div>
+            </template>
+          </div>
+          <a
+            class="slds-align slds-text-link slds-align_absolute-center"
+            onclick={handleExpand}
+            data-section="all"
+          >
+            <template if:false={expandAll}>View More</template>
+            <template if:true={expandAll}>View Less</template>
+          </a>
+        </template>
+        <template if:false={filterAll}>
+          <div class="slds-text-heading_medium slds-p-bottom_small">
+            My Products Available in this Region
+          </div>
+          <div class="slds-grid slds-gutters_x-small slds-wrap">
+            <template for:each={purchasedProducts} for:item="product">
+              <div
+                key={product.Id}
+                class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-medium-size_1-of-3 slds-small-size_1-of-2"
+              >
+                <c-product-card
+                  product-name={product.Name}
+                  description={product.Description}
+                  tags={product.Tags}
+                ></c-product-card>
+              </div>
+            </template>
+          </div>
+          <!-- <a
+            class="slds-align slds-text-link slds-align_absolute-center"
+            onclick={handleExpand}
+            data-section="purchased"
+          >
+            <template if:false={expandPurchased}>View More</template>
+            <template if:true={expandPurchased}>View Less</template>
+          </a> -->
+
+          <div
+            class="slds-text-heading_medium slds-p-bottom_small slds-p-top_medium slds-border_top"
+          >
+            My Products Scheduled for this Region
+          </div>
+          <div class="slds-grid slds-gutters_x-small slds-wrap">
+            <template for:each={scheduledProducts} for:item="product">
+              <div
+                key={product.Id}
+                class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-medium-size_1-of-3 slds-small-size_1-of-2"
+              >
+                <c-product-card
+                  product-name={product.Name}
+                  description={product.Description}
+                  tags={product.Tags}
+                ></c-product-card>
+              </div>
+            </template>
+          </div>
+          <!-- <a
+            class="slds-align slds-text-link slds-align_absolute-center"
+            onclick={handleExpand}
+            data-section="scheduled"
+          >
+            <template if:false={expandScheduled}>View More</template>
+            <template if:true={expandScheduled}>View Less</template>
+          </a> -->
+
+          <div
+            class="slds-text-heading_medium slds-p-bottom_small slds-p-top_medium slds-border_top"
+          >
+            My Products Not Available in this Region
+          </div>
+          <div class="slds-grid slds-gutters_x-small slds-wrap">
+            <template for:each={notAvailableProducts} for:item="product">
+              <div
+                key={product.Id}
+                class="slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-medium-size_1-of-3 slds-small-size_1-of-2"
+              >
+                <c-product-card
+                  product-name={product.Name}
+                  description={product.Description}
+                  tags={product.Tags}
+                ></c-product-card>
+              </div>
+            </template>
+          </div>
+          <a
+            class="slds-align slds-text-link slds-align_absolute-center"
+            onclick={handleExpand}
+            data-section="notAvailable"
+          >
+            <template if:false={expandNotAvailable}>View More</template>
+            <template if:true={expandNotAvailable}>View Less</template>
+          </a>
+        </template>
+      </lightning-tab>
+      <lightning-tab
+        label="Certifications"
+        value="two"
+        class="slds-p-around_small"
+      >
+        <div class="slds-text-title slds-text-color_weak">
+          Excepteur cupidatat eu nulla pariatur nisi veniam aliquip ut cupidatat
+          velit.
+        </div> </lightning-tab
+      ><lightning-tab
+        label="Data Policies"
+        value="three"
+        class="slds-p-around_small"
+      >
+        <div class="slds-text-title slds-text-color_weak">
+          Excepteur cupidatat eu nulla pariatur nisi veniam aliquip ut cupidatat
+          velit.
+        </div>
+      </lightning-tab>
+    </lightning-tabset>
+  </article>
+</template>

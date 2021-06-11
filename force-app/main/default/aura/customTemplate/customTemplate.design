@@ -1,0 +1,8 @@
+<design:component label="Org Migration Home">
+  <flexipage:template>
+    <flexipage:region name="header" defaultWidth="LARGE" />
+    <flexipage:region name="main" defaultWidth="LARGE" />
+    <flexipage:region name="column1" defaultWidth="Medium" />
+    <flexipage:region name="column2" defaultWidth="Medium" />
+  </flexipage:template>
+</design:component>

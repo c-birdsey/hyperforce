@@ -1,0 +1,23 @@
+<template>
+  <article
+    class="slds-card product-card slds-card_boundary slds-p-around_small slds-m-bottom_medium"
+  >
+    <div class="slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="slds-text-title_bold slds-text-link">
+            <a>{productName}</a>
+          </h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-p-top_xx-small slds-text-body_small">{description}</div>
+    <div class="slds-text-align_right slds-m-top_small">
+      <template for:each={tagList} for:item="tag">
+        <span key={tag.Id} class="slds-badge slds-badge slds-truncate"
+          >{tag.Value}</span
+        >
+      </template>
+    </div>
+  </article>
+</template>

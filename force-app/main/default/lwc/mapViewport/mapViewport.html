@@ -1,0 +1,112 @@
+<template>
+  <div class="slds-card slds-m-bottom_xx-large">
+    <lightning-tabset active-tab-value={activeTab}>
+      <div
+        class="slds-text-heading_medium slds-text-color_weak slds-p-around_small"
+      >
+        {headerMessage}
+      </div>
+      <div
+        class="slds-clearfix slds-p-left_small slds-p-right_small slds-p-bottom_small"
+      >
+        <div class="slds-float_left">
+          <lightning-combobox
+            label="Select Org to be Migrated"
+            style="width: 20em"
+            name="Org Selection Dropdown"
+            value={activeOrg}
+            placeholder="Select Org"
+            options={orgs}
+            onchange={handleOrgChange}
+          ></lightning-combobox>
+        </div>
+        <div class="slds-float_right">
+          <div><label class="slds-form-element__label"></label></div>
+          <lightning-button-group>
+            <lightning-button-icon
+              icon-name="utility:zoomout"
+              variant="border-filled"
+              alternative-text="Zoom Out"
+              onclick={handleZoomOut}
+            ></lightning-button-icon>
+            <lightning-button-icon
+              icon-name="utility:expand_alt"
+              variant="border-filled"
+              alternative-text="Fit Map"
+              onclick={handleZoomReset}
+            ></lightning-button-icon>
+            <lightning-button-icon
+              icon-name="utility:zoomin"
+              variant="border-filled"
+              alternative-text="Zoom In"
+              onclick={handleZoomIn}
+            ></lightning-button-icon>
+          </lightning-button-group>
+          <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+            <lightning-button-menu
+              alternative-text="Change view"
+              variant="border-filled"
+              icon-name="utility:location"
+              menu-alignment="right"
+              class="slds-p-left_xx-small"
+            >
+              <lightning-menu-item
+                value="Map View"
+                label="Map View"
+                prefix-icon-name="utility:location"
+                onclick={handleView}
+              ></lightning-menu-item>
+              <lightning-menu-item
+                value="Table View"
+                label="List View"
+                prefix-icon-name="utility:table"
+                onclick={handleView}
+              ></lightning-menu-item>
+            </lightning-button-menu>
+          </div>
+          <lightning-button-icon
+            icon-name="utility:refresh"
+            variant="border-filled"
+            alternative-text="Refresh"
+            title="Refresh"
+            class="slds-p-left_xx-small"
+          ></lightning-button-icon>
+        </div>
+      </div>
+      <lightning-tab
+        label="Org Distribution"
+        value="distribution"
+        class="slds-p-around_small"
+        onactive={handleActive}
+      >
+        <template if:true={mapView}>
+          <c-map
+            map-type="distribution"
+            map-view={mapView}
+            active-org={activeOrg}
+          ></c-map>
+        </template>
+        <template if:false={mapView}>
+          <c-custom-data-table table-view="orgs"></c-custom-data-table>
+        </template>
+      </lightning-tab>
+      <lightning-tab
+        label="Explore Regions"
+        value="regions"
+        class="slds-p-around_small"
+        onactive={handleActive}
+      >
+        <template if:true={mapView}>
+          <c-map
+            map-type="regions"
+            map-view={mapView}
+            active-org={activeOrg}
+          ></c-map>
+        </template>
+        <template if:false={mapView}>
+          <c-custom-data-table table-view="regions"></c-custom-data-table>
+        </template>
+      </lightning-tab>
+    </lightning-tabset>
+  </div>
+</template>

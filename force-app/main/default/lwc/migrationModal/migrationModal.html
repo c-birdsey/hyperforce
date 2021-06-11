@@ -1,0 +1,100 @@
+<template>
+  <section
+    role="dialog"
+    tabindex="-1"
+    aria-labelledby="modal-heading-01"
+    aria-modal="true"
+    aria-describedby="modal-content-id-1"
+    class="slds-modal slds-fade-in-open"
+  >
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <lightning-button-icon
+          class="slds-modal__close"
+          icon-name="utility:close"
+          variant="bare-inverse"
+          size="large"
+          alternative-text="Close"
+          title="Close"
+          onclick={handleCancel}
+        ></lightning-button-icon>
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+          Start an Org Migration
+        </h2>
+      </header>
+      <div
+        class="slds-modal__content slds-p-around_medium"
+        id="modal-content-id-1"
+      >
+        <div class="slds-grid slds-gutters slds-p-bottom_medium">
+          <div class="slds-col slds-size_1-of-2">
+            <lightning-combobox
+              dropdown-alignment="auto"
+              label="Select Org to be Migrated"
+              name="Org Selection Dropdown"
+              value={selectedOrg}
+              placeholder="Select Org"
+              options={orgs}
+              onchange={handleOrgChange}
+            ></lightning-combobox>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <lightning-combobox
+              dropdown-alignment="auto"
+              label="Select Target Region"
+              name="Target Region Selection Dropdown"
+              value={selectedRegion}
+              placeholder="Select Target Region"
+              options={regions}
+              onchange={handleRegionChange}
+            ></lightning-combobox>
+          </div>
+        </div>
+        <div class="slds-border_top slds-p-bottom_medium"></div>
+        <template if:true={selectedRegion}>
+          <div class="slds-text-heading_small slds-p-bottom_small">
+            Target Region Details
+          </div>
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-2">
+              <div class="slds-text-body_small">Availability</div>
+              <div>{availability}</div>
+              <br />
+              <div class="slds-text-body_small">Available Zones</div>
+              <div>{zones}</div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <div class="slds-text-body_small">Compliance</div>
+              <div class={complianceStyle}><b>{compliance}</b></div>
+              <br />
+              <div class="slds-text-body_small">Number of Instances</div>
+              <div>{instances}</div>
+            </div>
+          </div>
+        </template>
+        <template if:false={selectedRegion}>
+          <div class="slds-text-color_weak">
+            <i>Select a target region to see migration details</i>
+          </div>
+        </template>
+      </div>
+      <footer class="slds-modal__footer">
+        <lightning-button
+          label="Cancel"
+          title="Cancel"
+          onclick={handleCancel}
+          class="slds-p-right_x-small"
+        ></lightning-button>
+
+        <lightning-button
+          variant="brand"
+          label="Save"
+          title="Save"
+          onclick={handleSave}
+          disabled={isDisabled}
+        ></lightning-button>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
